@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mach-ii PUBLIC "-//Mach-II//DTD Mach-II Configuration 1.8.0//EN"
+	"http://www.mach-ii.com/dtds/mach-ii_1_8_0.dtd" >
+<!-- 
+The [beanFactoryPropertyName] parameter value is the name of the Mach-II property name 
+that will hold a reference to the ColdSpring beanFactory. This parameter 
+defaults to "coldspring.beanfactory.root" if not defined.
+
+The [resolveMachIIDependencies] parameter value indicates if the property to "automatically"
+wire Mach-II listeners/filters/plugins/properties.  This parameter defaults to FALSE if not defined.
+- TRUE (resolves all Mach-II dependencies)
+- FALSE (does not resolve Mach-II dependencies)
+
+The [parentBeanFactoryScope] parameter values defines which scope to pull in a parent bean 
+factory. This parameter defaults to 'false' if not defined and indicates that a parent bean
+factory does not need to be referenced.
+
+The [parentBeanFactoryKey] parameter values defines a key to pull in a parent bean factory
+from the scope specified in the [parentBeanFactoryKey] parameter.  This parameter defaults 
+to 'false' if not defined and indicates that a parent bean factory does not need to be referenced.
+
+The [placeFactoryInApplicationScope] parameter indicates whether or not to place the bean factory 
+in the application scope.  This parameter is used to for setting your bean factory for use as a
+parent.  The key that used is driven from the value from of the [beanFactoryPropertyName] parameter.
+If the parent uses the same value for the beanFactoryPropertyName, the module name (e.g. "_account")
+is append to the end of the key to eliminate namespace conflicts in the application scope.
+This parameter defaults to 'false' if not defined and indicates that this bean factory should not
+be placed in the application scope.
+
+The [placeFactoryInServerScope] parameter indicates whether or not to place the bean factory 
+in the server scope.  This parameter is used to for setting your bean factory for use as a
+parent.  The key that used is driven from the value from of the [beanFactoryPropertyName] parameter.
+If the parent uses the same value for the beanFactoryPropertyName, the module name (e.g. "_account")
+is append to the end of the key to eliminate namespace conflicts in the server scope.
+This parameter defaults to 'false' if not defined and indicates that this bean factory should not
+be placed in the server scope.
+-->
+<mach-ii version="1.8.1">
+    <properties>
+	<property name="wireboxProperty" type="MachII.properties.WireboxProperty">
+	<parameters>
+		<!-- Mach-II property that reference wirebox instance - Default: 'wirebox' -->
+		<parameter name="beanFactoryPropertyName" value="wirebox"/>
+		
+		<!-- Whether to resolve dependencies for listeners/filters/plugins - Default: FALSE -->
+		<parameter name="resolveMachIIDependencies" value="true"/>
+		
+		<!-- scope to pull in a parent bean factory into a child bean factory - Default: application -->
+		<parameter name="parentBeanFactoryScope" value="application"/>
+		
+		<!-- key to pull in a parent bean factory from the application scope - Default: FALSE -->
+		<!--<parameter name="parentBeanFactoryKey" value="false"/>-->
+		
+		<!-- Autowire attribute name to introspect in cfcomponent tags - Default: 'depends' -->
+		<parameter name="autowireAttributeName" value="depends" />
+		
+	</parameters>
+	</property>
+
+    </properties>
+</mach-ii>
